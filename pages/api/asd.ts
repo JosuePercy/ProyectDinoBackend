@@ -40,13 +40,9 @@ export default async function Dinos(
 }
 const getLisApi = async (req: NextApiRequest, response: NextApiResponse) => {
   const query =
-    "select id, name, description, image, precio, descuento  from  juguetes";
+    "select juguetes.id, juguetes.name, juguetes.image,juguetes.precio,juguetes.stock,juguetes.status,juguetes.dateregister  from  juguetes";
 
   const reponseDB = await connection.query(query);
   // response.status(200).json([]);
   response.status(200).json(reponseDB.rows);
 };
-// const getconsul = async (req: any, res: any) => {
-//   const response = await connection.query("select * from  juguetes");
-//   console.log(response.rows);
-//   res.send("users");
